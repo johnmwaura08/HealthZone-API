@@ -12,6 +12,9 @@ if (builder.Environment.IsProduction())
     // railway injects the PORT environment variable
     var port = Environment.GetEnvironmentVariable("PORT") ?? "8081";
     builder.WebHost.UseUrls($"http://*:{port}");
+
+    var connUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
+    Console.WriteLine($"DATABASE_URL: {connUrl}");
 }
 
 
