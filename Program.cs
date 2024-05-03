@@ -7,8 +7,13 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-var port = Environment.GetEnvironmentVariable("PORT") ?? "8081";
-builder.WebHost.UseUrls($"http://*:{port}");
+if (builder.Environment.IsProduction())
+{
+    // railway injects the PORT environment variable
+    var port = Environment.GetEnvironmentVariable("PORT") ?? "8081";
+    builder.WebHost.UseUrls($"http://*:{port}");
+}
+
 
 var app = builder.Build();
 
