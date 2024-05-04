@@ -7,5 +7,17 @@ services:
       dockerfile: Dockerfile
     image: health-zone-api:1.0.0  
     restart: always
+    environment:
+        - PORT=44398
     ports:
       - 44398:8080
+  health-zone-db:
+        image: postgres:13
+        restart: always
+        ports:
+            - 5497:5432
+        environment:
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: 123
+            POSTGRES_DB: health-zone
+
