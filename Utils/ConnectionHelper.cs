@@ -1,3 +1,5 @@
+using Npgsql;
+
 public static class ConnectionHelper
 {
     public static string GetConnectionString(IConfiguration configuration, IWebHostEnvironment environment
@@ -33,9 +35,8 @@ public static class ConnectionHelper
             Username = userInfo[0],
             Password = userInfo[1],
             Database = databaseUri.LocalPath.TrimStart('/'),
-            SslMode = Npgsql.SslMode.Require,
-            TrustServerCertificate = true
+            SslMode = SslMode.Require
         };
-        return builder.ToString()!;
+        return builder.ToString();
     }
 }
