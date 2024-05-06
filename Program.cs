@@ -1,4 +1,6 @@
 using HealthZoneAPI.Data;
+using HealthZoneAPI.Services;
+using HealthZoneAPI.Services.interfaces;
 using HealthZoneAPI.Utils;
 using Microsoft.EntityFrameworkCore;
 
@@ -26,6 +28,9 @@ builder.Services.AddDbContext<HealthzoneDBContext>(options =>
     Console.WriteLine($"Connection String: {connStr}");
     options.UseNpgsql(connStr);
 });
+
+builder.Services.AddScoped<IWeightService, WeightService>();
+
 
 var app = builder.Build();
 
