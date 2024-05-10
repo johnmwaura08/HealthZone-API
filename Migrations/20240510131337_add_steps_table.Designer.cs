@@ -3,6 +3,7 @@ using System;
 using HealthZoneAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace HealthZoneAPI.Migrations
 {
     [DbContext(typeof(HealthzoneDBContext))]
-    partial class HealthzoneDBContextModelSnapshot : ModelSnapshot
+    [Migration("20240510131337_add_steps_table")]
+    partial class add_steps_table
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

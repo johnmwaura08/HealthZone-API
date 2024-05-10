@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using HealthZoneAPI.Services.interfaces;
+using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -6,38 +7,22 @@ namespace HealthZoneAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ExerciseController : ControllerBase
+    public class ExerciseController(IExerciseService _exerciseService) : ControllerBase
     {
-        // GET: api/<ExerciseController>
-        [HttpGet]
-        public IEnumerable<string> Get()
+      
+
+        [HttpPost("log-daily-step-count")]
+        public async Task<ActionResult> LogDailyStepCount(int stepCount)
         {
-            return new string[] { "value1", "value2" };
+            var step = await _exerciseService.LogDailyStepCount(stepCount);
+            return Ok(step);
         }
 
-        // GET api/<ExerciseController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet("get-all-active")]
+        public async Task<ActionResult> GetAllActive()
         {
-            return "value";
-        }
-
-        // POST api/<ExerciseController>
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT api/<ExerciseController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<ExerciseController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            var res = await _exerciseService.GetAllActive();
+            return Ok(res);
         }
     }
 }

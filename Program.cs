@@ -30,6 +30,7 @@ builder.Services.AddDbContext<HealthzoneDBContext>(options =>
 });
 
 builder.Services.AddScoped<IWeightService, WeightService>();
+builder.Services.AddScoped<IExerciseService, ExerciseService>();
 
 
 var app = builder.Build();

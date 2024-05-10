@@ -39,6 +39,8 @@ namespace HealthZoneAPI.Data
 
 
         public DbSet<Weight> Weight { get; set; }
+
+        public DbSet<Step> Step { get; set; }
     }
 
 
