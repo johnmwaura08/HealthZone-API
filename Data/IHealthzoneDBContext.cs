@@ -13,5 +13,11 @@ namespace HealthZoneAPI.Data
         Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
 
         DbSet<Weight> Weight { get; set; }
+
+        DbSet<Step> Step { get; set; }
+
+        DbSet<WorkoutCategory> WorkoutCategory { get; set; }
+
+        DbSet<Workout> Workout { get; set; }
     }
 }

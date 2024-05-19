@@ -3,6 +3,7 @@ using System;
 using HealthZoneAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace HealthZoneAPI.Migrations
 {
     [DbContext(typeof(HealthzoneDBContext))]
-    partial class HealthzoneDBContextModelSnapshot : ModelSnapshot
+    [Migration("20240519171444_create_workout_t_able")]
+    partial class create_workout_t_able
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -125,9 +128,8 @@ namespace HealthZoneAPI.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("CategoryType")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<int>("CategoryType")
+                        .HasColumnType("integer");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
