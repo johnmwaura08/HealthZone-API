@@ -22,7 +22,7 @@ namespace HealthZoneAPI.Models.Requests
     {
 
         [Required]
-        public string Name { get; set; } = string.Empty;
+        public int WeightInPounds { get; set; }
 
         [Required]
         public int CategoryId { get; set; }

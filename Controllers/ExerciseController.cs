@@ -73,7 +73,7 @@ namespace HealthZoneAPI.Controllers
         public async Task<ActionResult> CreateWorkout([FromBody] CreateWorkoutRequest request)
         {
             var res = await _exerciseService.CreateWorkout(
-                request.Name, request.CategoryId, request.Reps, request.Sets, request.Comments);
+                request.WeightInPounds, request.CategoryId, request.Reps, request.Sets, request.Comments);
             return Ok(res);
         }
 

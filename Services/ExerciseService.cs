@@ -79,26 +79,26 @@ public class ExerciseService(HealthzoneDBContext _context) : IExerciseService
     }
 
 
-    public async Task<Workout> CreateWorkout(string name, int categoryId, int reps, int sets, string comments)
+    public async Task<Workout> CreateWorkout(int weight, int categoryId, int reps, int sets, string comments)
 
     {
         var workout = new Workout
         {
-            Name = name,
             WorkoutCategoryId = categoryId,
             Comments = comments,
             Reps = reps,
-            Sets = sets
+            Sets = sets,
+            WeightInPounds = weight
         };
         _context.Workout.Add(workout);
         await _context.SaveChangesAsync();
         return workout;
     }
 
-    public async Task<Workout> UpdateWorkout(int id, string name, int categoryId, string comments)
+    public async Task<Workout> UpdateWorkout(int id, int weight, int categoryId, string comments)
     {
         var workout = await _context.Workout.FirstOrDefaultAsync(x => x.Id == id && x.RecordStatus) ?? throw new Exception("Workout not found");
-        workout.Name = name;
+        workout.WeightInPounds = weight;
         workout.WorkoutCategoryId = categoryId;
         workout.Comments = comments;
         await _context.SaveChangesAsync();
